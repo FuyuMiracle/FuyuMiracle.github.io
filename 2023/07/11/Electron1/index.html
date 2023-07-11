@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>Electron上下文隔离进程间的四种通信方式示例详解 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="[TOC] 一、Electron 进程之间的通信 Electron进程通信大致可分为主进程和渲染进程两种：  主进程：指的就是 node.js 进程，node.js 只有一个进程。 渲染进程：可以简单理解为一个 Chromium 的 web 页面，可以有多个渲染进程。    ipc通信就是在主进程和渲染进程之间通信​​​&gt;推荐使用上下文隔离渲染器进程进行通信。这种方式的好处是无需在渲染进程中">
+  <meta name="description" content="一、Electron 进程之间的通信 Electron进程通信大致可分为主进程和渲染进程两种：  主进程：指的就是 node.js 进程，node.js 只有一个进程。 渲染进程：可以简单理解为一个 Chromium 的 web 页面，可以有多个渲染进程。    ipc通信就是在主进程和渲染进程之间通信​​​&gt;推荐使用上下文隔离渲染器进程进行通信。这种方式的好处是无需在渲染进程中直接使用 ​">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Electron上下文隔离进程间的四种通信方式示例详解">
-<meta property="og:url" content="http://example.com/2023/07/11/Electron%E4%B8%8A%E4%B8%8B%E6%96%87%E9%9A%94%E7%A6%BB%E8%BF%9B%E7%A8%8B%E9%97%B4%E7%9A%84%E5%9B%9B%E7%A7%8D%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E7%A4%BA%E4%BE%8B%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:url" content="http://example.com/2023/07/11/Electron1/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="[TOC] 一、Electron 进程之间的通信 Electron进程通信大致可分为主进程和渲染进程两种：  主进程：指的就是 node.js 进程，node.js 只有一个进程。 渲染进程：可以简单理解为一个 Chromium 的 web 页面，可以有多个渲染进程。    ipc通信就是在主进程和渲染进程之间通信​​​&gt;推荐使用上下文隔离渲染器进程进行通信。这种方式的好处是无需在渲染进程中">
+<meta property="og:description" content="一、Electron 进程之间的通信 Electron进程通信大致可分为主进程和渲染进程两种：  主进程：指的就是 node.js 进程，node.js 只有一个进程。 渲染进程：可以简单理解为一个 Chromium 的 web 页面，可以有多个渲染进程。    ipc通信就是在主进程和渲染进程之间通信​​​&gt;推荐使用上下文隔离渲染器进程进行通信。这种方式的好处是无需在渲染进程中直接使用 ​">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-07-11T04:08:38.000Z">
-<meta property="article:modified_time" content="2023-07-11T09:45:31.168Z">
+<meta property="article:modified_time" content="2023-07-11T10:01:37.836Z">
 <meta property="article:author" content="Fuyu Miracle">
 <meta name="twitter:card" content="summary">
   
@@ -154,7 +154,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Electron上下文隔离进程间的四种通信方式示例详解" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Electron1" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -166,7 +166,7 @@
   
 
         
-        <a href="/2023/07/11/Electron%E4%B8%8A%E4%B8%8B%E6%96%87%E9%9A%94%E7%A6%BB%E8%BF%9B%E7%A8%8B%E9%97%B4%E7%9A%84%E5%9B%9B%E7%A7%8D%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E7%A4%BA%E4%BE%8B%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
+        <a href="/2023/07/11/Electron1/" class="archive-article-date">
   	<time datetime="2023-07-11T04:08:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-11</time>
 </a>
         
@@ -174,8 +174,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>[TOC]</p>
-<h1 id="一、Electron-进程之间的通信"><a href="#一、Electron-进程之间的通信" class="headerlink" title="一、Electron 进程之间的通信"></a>一、Electron 进程之间的通信</h1><blockquote>
+        <h1 id="一、Electron-进程之间的通信"><a href="#一、Electron-进程之间的通信" class="headerlink" title="一、Electron 进程之间的通信"></a>一、Electron 进程之间的通信</h1><blockquote>
 <p><strong>Electron进程通信大致可分为主进程和渲染进程两种：</strong></p>
 <ul>
 <li>主进程：指的就是 node.js 进程，node.js 只有一个进程。</li>
@@ -312,7 +311,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/07/11/Electron%E4%B8%8A%E4%B8%8B%E6%96%87%E9%9A%94%E7%A6%BB%E8%BF%9B%E7%A8%8B%E9%97%B4%E7%9A%84%E5%9B%9B%E7%A7%8D%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E7%A4%BA%E4%BE%8B%E8%AF%A6%E8%A7%A3/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/07/11/Electron1/" alt="微信分享二维码">
     </div>
 </div>
 
