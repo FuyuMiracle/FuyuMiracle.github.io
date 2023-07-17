@@ -152,6 +152,76 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-electron-download-file" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/07/17/electron-download-file/">Electron实现文件下载并展示下载进度</a>
+    </h1>
+  
+
+        
+        <a href="/2023/07/17/electron-download-file/" class="archive-article-date">
+  	<time datetime="2023-07-17T10:52:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h1><blockquote>
+<p>1.在主进程中定义一个全局变量 downloadItems 用于管理所有的下载任务项<br>2.主进程在接收到下载文件任务的时候，将下载任务添加进入 downloadItems，通过win.webContents.send(‘watch-download-file-state’)把下载过程进度 推送给渲染进程<br>3.主进程监听渲染进程发送过来的事件，根据下载任务项downloadItems 来获取某个文件下载实例，进行相应的处理。<br>4.通过预加载脚本向渲染器进程暴露一个全局的 window.electronAPI 变量，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;downloadFile: (windowName,url,fileName,fingerPrint) =&gt; ipcRenderer.send(&#x27;download-file&#x27;, windowName,url,fileName,fingerPrint),//下载文件</span><br><span class="line">&gt;watchDownloadFileState: (callback) =&gt; ipcRenderer.on(&#x27;watch-download-file-state&#x27;, callback),//推送给渲染进程 下载过程中的状态</span><br><span class="line">&gt;setDownloadFileState: (state,fingerPrint,url) =&gt; ipcRenderer.send(&#x27;set-download-file-state&#x27;,state,fingerPrint,url),//接收渲染进程 设置下载状态（暂停、恢复、取消） 的通知</span><br><span class="line">&gt;getDownloadFileState: (fingerPrint,url,returnType) =&gt; ipcRenderer.invoke(&#x27;get-download-file-state&#x27;,fingerPrint,url,returnType),//接收渲染进程 获取下载状态 的通知 返回下载状态字符串</span><br><span class="line">&gt;getDownloadFileSavepath: (fingerPrint) =&gt; ipcRenderer.invoke(&#x27;get-download-file-savepath&#x27;,fingerPrint),//接收渲染进程 获取某个下载文件的下载存放路径 的通知 返回下载存放路径</span><br><span class="line">&gt;openDir: (path,isOpenFile) =&gt; ipcRenderer.invoke(&#x27;open-dir&#x27;,path,isOpenFile),//从渲染进程中打开目录，并返回结果</span><br><span class="line">&gt;fsExists: (path) =&gt; ipcRenderer.invoke(&#x27;fs-exists&#x27;,path),//从渲染进程中通知主进程判断一下文件路径是否存在，主进程返回结果</span><br></pre></td></tr></table></figure>
+<p>5.渲染进程下载文件逻辑<br><img src="/img/electron-download-file/img.png" alt="在这里插入图片描述"></p>
+</blockquote>
+<h1 id="主进程代码"><a href="#主进程代码" class="headerlink" title="主进程代码"></a>主进程代码</h1>
+        
+          <a class="article-more-a" href="/2023/07/17/electron-download-file/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/07/17/electron-download-file/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-electron-max-min-close-window" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
