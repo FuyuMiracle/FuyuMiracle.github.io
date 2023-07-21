@@ -15,12 +15,12 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="需求 vue3项目需要渲染markdown文本  方案 使用 markdown-it 插件，在npm里下载次数较多，也支持vue3，使用简单，所以决定使用它啦  （1）安装 npm install markdown-it –save  （2）使用代码12345&lt;template&gt;	&lt;div v-html&#x3D;&quot;markdown.render(&amp;#x27;### 您有一个办件">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/aaff0322a47145c8afe70f749e36cd66.png">
+<meta property="og:image" content="http://example.com/img/vue3-markdown-it/img.jpg">
 <meta property="article:published_time" content="2023-07-21T09:55:33.000Z">
-<meta property="article:modified_time" content="2023-07-21T09:56:29.913Z">
+<meta property="article:modified_time" content="2023-07-21T10:05:12.331Z">
 <meta property="article:author" content="Fuyu Miracle">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/aaff0322a47145c8afe70f749e36cd66.png">
+<meta name="twitter:image" content="http://example.com/img/vue3-markdown-it/img.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -186,7 +186,7 @@
 <p>npm install markdown-it –save</p>
 </blockquote>
 <h2 id="（2）使用代码"><a href="#（2）使用代码" class="headerlink" title="（2）使用代码"></a>（2）使用代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;div v-html=&quot;markdown.render(&#x27;### 您有一个办件需要处理\n - 发送时间：2020-02-21\n - 发送人：张三&#x27;)&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">import MarkdownIt from &#x27;markdown-it&#x27;;</span><br><span class="line">const markdown = new MarkdownIt()</span><br></pre></td></tr></table></figure>
-<h2 id="（3）效果图"><a href="#（3）效果图" class="headerlink" title="（3）效果图"></a>（3）效果图</h2><p><img src="https://img-blog.csdnimg.cn/aaff0322a47145c8afe70f749e36cd66.png" alt="在这里插入图片描述"></p>
+<h2 id="（3）效果图"><a href="#（3）效果图" class="headerlink" title="（3）效果图"></a>（3）效果图</h2><p><img src="/img/vue3-markdown-it/img.jpg" alt="在这里插入图片描述"></p>
 <h1 id="若需要更详细的配置请参考：-markdown-it中文文档"><a href="#若需要更详细的配置请参考：-markdown-it中文文档" class="headerlink" title="若需要更详细的配置请参考： markdown-it中文文档"></a>若需要更详细的配置请参考： <a target="_blank" rel="noopener" href="https://markdown-it.docschina.org/">markdown-it中文文档</a></h1>
       
 
